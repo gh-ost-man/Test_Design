@@ -59,11 +59,11 @@ namespace TaskLib
     {
         public List<TestCL> Tests = new List<TestCL>();
 
-        XmlSerializer xs = new XmlSerializer(typeof(List<TestCL>), new XmlRootAttribute("Tasks"));
+       static XmlSerializer xs = new XmlSerializer(typeof(TestCL), new XmlRootAttribute("TestCL"));
 
-        XDocument doc;
+       static XDocument doc;
 
-        public void SerializeTestCL(string fileName, TestCL test)
+        public static void SerializeTestCL(string fileName, TestCL test)
         {
             using (FileStream fs = new FileStream(fileName + ".xml", FileMode.OpenOrCreate))
             {
@@ -71,7 +71,7 @@ namespace TaskLib
             }
         }
 
-        public TestCL DeserializeTestCL(string fileName)
+        public static TestCL DeserializeTestCL(string fileName)
         {
             TestCL test;
 
